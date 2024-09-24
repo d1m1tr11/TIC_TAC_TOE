@@ -77,11 +77,16 @@ namespace TIC_TAC_TOE
 
             if (status == 1)
             {
+                Console.Clear ();
+                Board();
                 Console.WriteLine();
                 Console.WriteLine($"Player {player%2 + 1} Won!");
+                
             }
             else
             {
+                Console.Clear();
+                Board();
                 Console.WriteLine();
                 Console.WriteLine("Its Tie!");
             }
