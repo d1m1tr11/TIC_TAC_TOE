@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection.Metadata.Ecma335;
 using System.Threading;
 namespace TIC_TAC_TOE
 {
@@ -6,7 +7,7 @@ namespace TIC_TAC_TOE
     {
         //Variables
         static string[] arr = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" };
-        static int player = 0; //romeli motamashe tamashobs
+        static int player = 1; //romeli motamashe tamashobs
         static int choice; //romel ujras irchevs motamashe
         static int status; //game status, 0 = playing, 1 = winner, 2 = tie
 
@@ -20,51 +21,67 @@ namespace TIC_TAC_TOE
                 Console.WriteLine();
                 if (player % 2 == 0)
                 {
-                    Console.WriteLine("Player 1 turn");
+                    Console.WriteLine("Player 2 turn");
                 }
                 else
                 {
-                    Console.WriteLine("Player 2 turn");
+                    Console.WriteLine("Player 1 turn");
                 }
                 Console.WriteLine();
 
                 Board();
 
                 choice = Convert.ToInt32(Console.ReadLine());
-
-                if (arr[choice] != "X" && arr[choice] != "O")
+                if (choice > 0 && choice < 10)
                 {
-                    
-                    if (player % 2 == 0)
+
+                    if (arr[choice] != "X" && arr[choice] != "O")
                     {
-                        arr[choice] = "X";
-                        player++;
+
+                        if (player % 2 == 0)
+                        {
+                            arr[choice] = "O";
+                            player++;
+                        }
+                        else
+                        {
+                            arr[choice] = "X";
+                            player++;
+                        }
                     }
                     else
                     {
-                        arr[choice] = "O";
-                        player++;
+                        Console.WriteLine();
+                        Console.WriteLine($"Sorry {choice}, is already marked {arr[choice]}.");
+                        Console.WriteLine("TRY AGAIN");
+                        Thread.Sleep(1000);
                     }
-                }
-                else
-                {
-                    Console.WriteLine();
-                    Console.WriteLine($"Sorry {choice}, is already marked {arr[choice]}.");
-                    Console.WriteLine("TRY AGAIN");
+
+                    status = CheckWin();
                 }
 
-                status = CheckWin();
+                else 
+                { 
+                    Console.WriteLine("TRY 1 - 9:");
+                    Thread.Sleep(1000);
+                }
+                             
+
 
             }
+            
             while (status == 0);
+
 
 
             if (status == 1)
             {
-                Console.WriteLine("Player Won!");
+                Console.WriteLine();
+                Console.WriteLine($"Player {player%2 + 1} Won!");
             }
             else
             {
+                Console.WriteLine();
                 Console.WriteLine("Its Tie!");
             }
             Console.WriteLine();
