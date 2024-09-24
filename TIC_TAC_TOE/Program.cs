@@ -13,9 +13,12 @@ namespace TIC_TAC_TOE
 
         static void Main(string[] args)
         {
+            do
+            {
 
-
-            Board();// getting filled board again
+            }
+            while (true);
+           
 
         }
 
