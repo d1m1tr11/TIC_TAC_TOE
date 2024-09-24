@@ -31,7 +31,8 @@ namespace TIC_TAC_TOE
 
                 Board();
 
-                choice = Convert.ToInt32(Console.ReadLine());
+                int.TryParse(Console.ReadLine(), out choice);
+
                 if (choice > 0 && choice < 10)
                 {
 
