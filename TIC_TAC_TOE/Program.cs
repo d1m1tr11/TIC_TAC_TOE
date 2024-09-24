@@ -15,6 +15,20 @@ namespace TIC_TAC_TOE
         {
             do
             {
+                Console.Clear();
+                Console.WriteLine("Player 1 - X & Player 2 - O");
+                Console.WriteLine();
+                if (player % 2 == 0)
+                {
+                    Console.WriteLine("Player 1 turn");
+                }
+                else
+                {
+                    Console.WriteLine("player 2 turn");
+                }
+                Console.WriteLine();
+
+                Board();
 
             }
             while (true);
